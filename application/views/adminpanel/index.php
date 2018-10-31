@@ -53,19 +53,16 @@
                     </aside>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" style="padding:0px;padding-top: 80px; ">
-                    <div class="text-right pull-right" style="padding-right: 10px;"> <i class="fa fa-user"></i> <?php echo $this->user_name?> [ <?php echo group_name($this->group_id)?>], <a href="<?php echo base_url('adminpanel/manage/logout')?>">注销</a></div>
+                    <div class="text-right pull-right" style="padding-right: 10px;">
+                        <i class="fa fa-user"></i>
+                        <?php echo group_name($this->group_id) ?> - <?php echo $this->user_name ?>
+                        <a class="btn" href="<?php echo base_url('adminpanel/manage/logout')?>"><span class="glyphicon glyphicon-arrow-left"></span>注销</a></div>
 
                     <ul class='breadcrumb' id='breadcrumb'>
                          <?php echo $current_pos?>
                     </ul>
 
                     <div style="padding: 0px 10px">
-                        <?php if(DEMO_STATUS):?>
-                        <div class="alert alert-warning alert-dismissible" role="alert">
-                          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                          <strong>友情提示! </strong> 当前为演示状态，增删改都不会生效，谢谢, 需要变成正式版，请修改constans.php 中 DEMO_STATUS = FALSE；
-                        </div>
-                        <?php endif;?>
                         <?php echo $sub_page ?>
                     </div>
                 </div>
