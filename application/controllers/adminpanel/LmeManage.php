@@ -56,4 +56,13 @@ class LmeManage extends Admin_Controller {
             $this->view('add', array('require_js'=>true, 'is_edit'=>true, 'data_info'=>$data_info));
         }
     }
+
+    function show($id)
+    {
+        $id = intval($id);
+        $data_info = $this->Lme_manage_model->get_one(array('id' => $id));
+        if (!$data_info) exit(json_encode(array('status'=>false,'tips'=>'编辑的信息ID不存在')));
+
+        $this->view('show', array('require_js'=>true, 'is_edit'=>true, 'data_info'=>$data_info));
+    }
 }
