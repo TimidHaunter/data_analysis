@@ -29,29 +29,41 @@
                     <table class='table'>
                         <thead>
                             <tr>
-                                <th><?=lang('区服ID')?></th>
-                                <th><?=lang('显示ID')?></th>
-                                <th><?=lang('显示名称')?></th>
-                                <th><?=lang('开服时间')?></th>
-                                <th><?=lang('客户端显示状态')?></th>
-                                <th><?=lang('是否开服')?></th>
-                                <th><?=lang('在线人数')?></th>
-                                <th><?=lang('操作')?></th>
+                                <th><?='日期'?></th>
+                                <th><?='铜今日留存'?></th>
+                                <th><?='铜注销仓单量'?></th>
+                                <th><?='铝今日留存'?></th>
+                                <th><?='铝注销仓单量'?></th>
+                                <th><?='锌今日留存'?></th>
+                                <th><?='锌注销仓单量'?></th>
+                                <th><?='镍今日留存'?></th>
+                                <th><?='镍注销仓单量'?></th>
+                                <th><?='锡今日留存'?></th>
+                                <th><?='锡注销仓单量'?></th>
+                                <th><?='铅今日留存'?></th>
+                                <th><?='铅注销仓单量'?></th>
+                                <th><?='操作'?></th>
                             </tr>
                         </thead>
                         <tbody>
                         <?php foreach ($data_list as $v) : ?>
                             <tr>
-                                <td><?=@$v['serverId']?></td>
-                                <td><?=@$v['displayId']?></td>
-                                <td><?=@$v['serverName']?></td>
-                                <td><?php echo isset($v['openTime']) ? date("Y-m-d H:i:s", $v['openTime']/1000) : ""; ?></td>
-                                <td><?php echo $zone_status_list[@$v['clientShowState']] ?? lang('未知'); ?></td>
-                                <td><?php echo $zone_type_list[@$v['serverState']] ?? lang('未知'); ?></td>
-                                <td><?php echo @$v['online_num'] ?? lang('未知'); ?></td>
+                                <td><?=@$v['date']?></td>
+                                <td><?=@$v['cu_keep']?></td>
+                                <td><?=@$v['cu_cancel']?></td>
+                                <td><?=@$v['al_keep']?></td>
+                                <td><?=@$v['al_cancel']?></td>
+                                <td><?=@$v['zn_keep']?></td>
+                                <td><?=@$v['zn_cancel']?></td>
+                                <td><?=@$v['ni_keep']?></td>
+                                <td><?=@$v['ni_cancel']?></td>
+                                <td><?=@$v['sn_keep']?></td>
+                                <td><?=@$v['sn_cancel']?></td>
+                                <td><?=@$v['pb_keep']?></td>
+                                <td><?=@$v['pb_cancel']?></td>
                                 <td>
-                                    <?php aci_ui_a($folder_name, $controller_name, 'query_zone', '?platform='.$platform.'&zone='.$v['serverId'], ' class="btn btn-default btn-xs edit-btn"', '<span class="glyphicon glyphicon-share-alt"></span>'.lang('查看')) ?>
-                                    <?php aci_ui_a($folder_name, $controller_name, 'edit', '?platform='.$platform.'&zone='.$v['serverId'], ' class="btn btn-default btn-xs edit-btn"', '<span class="glyphicon glyphicon-edit"></span>'.lang('编辑')) ?>
+                                    <?php aci_ui_a($folder_name, $controller_name, 'show', '', ' class="btn btn-default btn-xs edit-btn"', '<span class="glyphicon glyphicon-share-alt"></span>查看') ?>
+                                    <?php aci_ui_a($folder_name, $controller_name, 'edit', '', ' class="btn btn-default btn-xs edit-btn"', '<span class="glyphicon glyphicon-edit"></span>编辑') ?>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

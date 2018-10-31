@@ -1,4 +1,4 @@
-require(['jquery', 'aci', 'bootstrap', 'bootstrapValidator'], function ($, aci) {
+require(['jquery', 'aci', 'bootstrap', 'bootstrapValidator', 'message'], function ($, aci) {
     $('#validateform').bootstrapValidator({
         message: '输入框不能为空',
         feedbackIcons: {
@@ -7,7 +7,7 @@ require(['jquery', 'aci', 'bootstrap', 'bootstrapValidator'], function ($, aci) 
             validating: 'glyphicon glyphicon-refresh'
         },
         fields: {
-            data:      {validators: {notEmpty: {message: '请填写日期'}}},
+            date:      {validators: {notEmpty: {message: '请填写日期'}}},
             cu_keep:   {validators: {notEmpty: {message: '请填写铜今日留存'}}},
             cu_cancel: {validators: {notEmpty: {message: '请填写铜注销仓单量'}}},
             al_keep:   {validators: {notEmpty: {message: '请填写铝今日留存'}}},
@@ -23,10 +23,12 @@ require(['jquery', 'aci', 'bootstrap', 'bootstrapValidator'], function ($, aci) 
         }
     }).on('success.form.bv', function (e) {
         e.preventDefault();
-        var url = SITE_URL + "adminpanel/lmeManage/add";
+
+        $("#dosubmit").attr("disabled","disabled");
+        $.scojs_message("正在保存，请稍等...", $.scojs_message.TYPE_WAIT);
 
         data = [
-            "data="      + $("#data").val(),
+            "date="      + $("#date").val(),
             "cu_keep="   + $("#cu_keep").val(),
             "cu_cancel=" + $("#cu_cancel").val(),
             "al_keep="   + $("#al_keep").val(),
@@ -41,12 +43,27 @@ require(['jquery', 'aci', 'bootstrap', 'bootstrapValidator'], function ($, aci) 
             "pb_cancel=" + $("#pb_cancel").val()
         ];
 
-        aci.post(url, data.join("&"), function(){
-            $.scojs_message('操作成功,3秒后将返回列表页...', $.scojs_message.TYPE_OK);
-            aci.goUrl(SITE_URL + 'assist/adManage/index', 1);
+        $.ajax({
+            type : "POST",
+            url  : SITE_URL+"adminpanel/lmeManage/add",
+            data : data.join("&"),
+            success:function(response){
+                var dataObj=jQuery.parseJSON(response);
+                if(dataObj.status)
+                {
+                    $.scojs_message('操作成功...', $.scojs_message.TYPE_OK);
+                    window.location.href=SITE_URL+"adminpanel/lmeManage/index";
+                } else {
+                    $.scojs_message(dataObj.tips, $.scojs_message.TYPE_ERROR);
+                    $("#dosubmit").removeAttr("disabled");
+                }
+            },
+            error: function (request, status, error) {
+                $.scojs_message(request.responseText, $.scojs_message.TYPE_ERROR);
+                $("#dosubmit").removeAttr("disabled");
+            }
         });
-    }).on('error.form.bv', function (e) {
-        $.scojs_message('带*号不能为空', $.scojs_message.TYPE_ERROR);
-        $("#dosubmit").removeAttr("disabled");
-    });
+
+    }).on('error.form.bv',function(e){ $.scojs_message('带*号不能为空', $.scojs_message.TYPE_ERROR);$("#dosubmit").removeAttr("disabled");});
+
 });

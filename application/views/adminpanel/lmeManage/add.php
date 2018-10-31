@@ -10,9 +10,9 @@
             <fieldset>
                 <legend>lme数据信息</legend>
                 <div class="form-group">
-                    <label for="data" class="col-sm-2 control-label form-control-static"><?='日期'?></label>
+                    <label for="date" class="col-sm-2 control-label form-control-static"><?='日期'?></label>
                     <div class="col-sm-2">
-                        <input class="form-control" type="text" size="90" value="<?php echo $data_info['data'] ?? "" ; ?>" id="data" name="data" placeholder="<?='请填写数据日期'?>"/>
+                        <input class="form-control" type="text" size="90" value="<?php echo $data_info['date'] ?? "" ; ?>" autocomplete="off" id="date" name="date" placeholder="<?='请填写数据日期'?>"/>
                     </div>
                 </div>
 

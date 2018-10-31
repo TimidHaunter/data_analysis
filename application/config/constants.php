@@ -69,7 +69,8 @@ define('ADMIN_URL_PATH',  SITE_URL.'adminpanel/');
 define('ADMIN_CSS_PATH',  SITE_URL.'css/adminpanel/');
 define('ADMIN_IMG_PATH', SITE_URL.'images/adminpanel/');
 
-
+define('NOW_TIME', time());
+define('NOW_DATE', date('Y-m-d H:i:s', NOW_TIME));
 
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */
