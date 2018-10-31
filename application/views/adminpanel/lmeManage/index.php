@@ -63,7 +63,7 @@
                                 <td><?=@$v['pb_cancel']?></td>
                                 <td>
                                     <?php aci_ui_a($folder_name, $controller_name, 'show', '', ' class="btn btn-default btn-xs edit-btn"', '<span class="glyphicon glyphicon-share-alt"></span>查看') ?>
-                                    <?php aci_ui_a($folder_name, $controller_name, 'edit', '', ' class="btn btn-default btn-xs edit-btn"', '<span class="glyphicon glyphicon-edit"></span>编辑') ?>
+                                    <?php aci_ui_a($folder_name, $controller_name, 'edit', $v['id'], ' class="btn btn-default btn-xs edit-btn"', '<span class="glyphicon glyphicon-edit"></span>编辑') ?>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

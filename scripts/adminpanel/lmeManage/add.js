@@ -45,7 +45,7 @@ require(['jquery', 'aci', 'bootstrap', 'bootstrapValidator', 'message'], functio
 
         $.ajax({
             type : "POST",
-            url  : SITE_URL+"adminpanel/lmeManage/add",
+            url  : is_edit ? SITE_URL+"adminpanel/lmeManage/edit/" + id : SITE_URL+"adminpanel/lmeManage/add",
             data : data.join("&"),
             success:function(response){
                 var dataObj=jQuery.parseJSON(response);

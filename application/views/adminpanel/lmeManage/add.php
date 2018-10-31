@@ -3,7 +3,7 @@
 <form class="form-horizontal" role="form" id="validateform" name="validateform" method="post" action="#">
     <div class='panel panel-default'>
         <div class='panel-heading'>
-            <i class='glyphicon glyphicon-th-list'></i> <?='Lme管理-添加'?>
+            <i class='glyphicon glyphicon-th-list'></i> <?='Lme管理'?> - <?php echo ($is_edit) ? '编辑' : '添加'; ?>
             <?php include(VIEWPATH.'filter/default/back'.EXT); ?>
         </div>
         <div class='panel-body'>
@@ -71,6 +71,7 @@
                     </div>
                 </div>
 
+
             </fieldset>
 
             <fieldset>
@@ -82,6 +83,9 @@
     </div>
 </form>
 <script language="javascript" type="text/javascript">
+    var id = '<?=@$data_info['id']?>';
+    var is_edit = <?php echo $is_edit ? "true" : "false" ?>;
+
     require(['<?php echo SITE_URL?>scripts/common.js'], function (common) {
         require(['<?php echo SITE_URL?>scripts/<?php echo $folder_name?>/<?php echo $controller_name?>/add.js']);
     });

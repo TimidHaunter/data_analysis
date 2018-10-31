@@ -13,8 +13,8 @@ class LmeManage extends Admin_Controller {
 
         $where_arr = array();
         $where = implode(" and ", $where_arr);
-        $orderby = 'date DESC';
-        $data_list = $this->Lme_manage_model->listinfo($where, '*', $orderby, $page_no, $this->Lme_manage_model->page_size,'',$this->Member_model->page_size,page_list_url('adminpanel/lmeManage/index',true));
+        $order_by = 'date DESC';
+        $data_list = $this->Lme_manage_model->listinfo($where, '*', $order_by, $page_no, $this->Lme_manage_model->page_size,'',$this->Member_model->page_size,page_list_url('adminpanel/lmeManage/index',true));
 
 		$this->view('index', array('require_js'=>true, 'data_list'=>$data_list??array()));
 	}
@@ -22,6 +22,11 @@ class LmeManage extends Admin_Controller {
 	function add()
     {
         if ($this->input->is_ajax_request()) {
+            // 先判断是否有该日期的数据
+            $date = $_POST['date'];
+            $data_info = $this->Lme_manage_model->get_one(array('date'=>$date));
+            if ($data_info) exit(json_encode(array('status'=>false,'tips'=>'日期'.$date.'数据已存在')));
+
             $_POST['create_time'] = NOW_DATE;
             $res = $this->Lme_manage_model->insert($_POST);
             if ($res) {
@@ -30,7 +35,25 @@ class LmeManage extends Admin_Controller {
                 exit(json_encode(array('status'=>false,'tips'=>'添加失败')));
             }
         } else {
-            $this->view('add', array('require_js'=>true));
+            $this->view('add', array('require_js'=>true, 'is_edit'=>false));
+        }
+    }
+
+    function edit($id)
+    {
+        $id = intval($id);
+        $data_info = $this->Lme_manage_model->get_one(array('id' => $id));
+        if (!$data_info) exit(json_encode(array('status'=>false,'tips'=>'编辑的信息ID不存在')));
+
+        if ($this->input->is_ajax_request()) {
+            $res = $this->Lme_manage_model->update($_POST, array('id' => $id));
+            if ($res) {
+                exit(json_encode(array('status'=>true,'tips'=>'编辑成功')));
+            } else {
+                exit(json_encode(array('status'=>false,'tips'=>'编辑失败')));
+            }
+        } else {
+            $this->view('add', array('require_js'=>true, 'is_edit'=>true, 'data_info'=>$data_info));
         }
     }
 }
