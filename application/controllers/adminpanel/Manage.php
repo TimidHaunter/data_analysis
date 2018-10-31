@@ -39,7 +39,7 @@ class Manage extends Admin_Controller {
 	
 	function index()
 	{
-			$this->view('index',array('require_js'=>true));
+        $this->view('index',array('require_js'=>true));
 	}
 	
 	public function logout()

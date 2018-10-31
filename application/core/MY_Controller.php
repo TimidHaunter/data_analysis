@@ -208,7 +208,7 @@ class Member_Controller extends Front_Controller{
 		
 		if(!($this->page_data['folder_name']=='member'&&$this->page_data['controller_name']=='manage'&&$this->page_data['method_name']=='login')&&!$_datainfo)
 		{
-			$this->showmessage('请您重新登录',site_url('member/manage/login'));
+			$this->showmessage('请您重新登录1',site_url('member/manage/login'));
 			exit(0);
 		}else if($_datainfo){
 			
@@ -413,14 +413,14 @@ class Admin_Controller extends Member_Controller{
 	
 		if(!$this->user_id&&!($this->page_data['folder_name']=='adminpanel'&&$this->page_data['controller_name']=='manage'&&$this->page_data['method_name']=='login'))
 		{
-			$this->showmessage('请您重新登录',site_url('adminpanel/manage/login'));
+			$this->showmessage('请您重新登录2',site_url('adminpanel/manage/login'));
 			exit(0);
 		}
 
 		$_datainfo = $this->Member_model->get_one(array('user_id'=>$this->user_id,'username'=>$this->user_name));
 		if(!($this->page_data['folder_name']=='adminpanel'&&$this->page_data['controller_name']=='manage'&&$this->page_data['method_name']=='login')&&!$_datainfo)
 		{
-			$this->showmessage('请您重新登录',site_url('adminpanel/manage/login'));
+			$this->showmessage('请您重新登录3',site_url('adminpanel/manage/login'));
 			exit(0);
 		}else if($_datainfo){
 			
