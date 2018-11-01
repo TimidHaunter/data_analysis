@@ -17,7 +17,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="cu" class="col-sm-2 control-label form-control-static"><?='铜（Cu）'?></label>
+                    <label for="cu" class="col-sm-2 control-label form-control-static"><?='铜(Cu)'?></label>
                     <div class="col-sm-2">
                         <input class="form-control" type="text" size="20" value="<?=@$data_info['cu_keep']??""?>" autocomplete="off" name="cu_keep" id="cu_keep" placeholder="<?='请填写铜今日留存'?>"/>
                     </div>
@@ -26,7 +26,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="al" class="col-sm-2 control-label form-control-static"><?='铝（Al）'?></label>
+                    <label for="al" class="col-sm-2 control-label form-control-static"><?='铝(Al)'?></label>
                     <div class="col-sm-2">
                         <input class="form-control" type="text" size="20" value="<?=@$data_info['al_keep']??""?>" autocomplete="off" name="al_keep" id="al_keep" placeholder="<?='请填写铝今日留存'?>"/>
                     </div>
@@ -35,7 +35,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="zn" class="col-sm-2 control-label form-control-static"><?='锌（Zn）'?></label>
+                    <label for="zn" class="col-sm-2 control-label form-control-static"><?='锌(Zn)'?></label>
                     <div class="col-sm-2">
                         <input class="form-control" type="text" size="20" value="<?=@$data_info['zn_keep']??""?>" autocomplete="off" name="zn_keep" id="zn_keep" placeholder="<?='请填写锌今日留存'?>"/>
                     </div>
@@ -44,7 +44,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="ni" class="col-sm-2 control-label form-control-static"><?='镍（Ni）'?></label>
+                    <label for="ni" class="col-sm-2 control-label form-control-static"><?='镍(Ni)'?></label>
                     <div class="col-sm-2">
                         <input class="form-control" type="text" size="20" value="<?=@$data_info['ni_keep']??""?>" autocomplete="off" name="ni_keep" id="ni_keep" placeholder="<?='请填写镍今日留存'?>"/>
                     </div>
@@ -53,7 +53,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="sn" class="col-sm-2 control-label form-control-static"><?='锡（Sn）'?></label>
+                    <label for="sn" class="col-sm-2 control-label form-control-static"><?='锡(Sn)'?></label>
                     <div class="col-sm-2">
                         <input class="form-control" type="text" size="20" value="<?=@$data_info['sn_keep']??""?>" autocomplete="off" name="sn_keep" id="sn_keep" placeholder="<?='请填写锡今日留存'?>"/>
                     </div>
@@ -62,7 +62,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="pb" class="col-sm-2 control-label form-control-static"><?='铅（Pb）'?></label>
+                    <label for="pb" class="col-sm-2 control-label form-control-static"><?='铅(Pb)'?></label>
                     <div class="col-sm-2">
                         <input class="form-control" type="text" size="20" value="<?=@$data_info['pb_keep']??""?>" autocomplete="off" name="pb_keep" id="pb_keep" placeholder="<?='请填写铅今日留存'?>"/>
                     </div>

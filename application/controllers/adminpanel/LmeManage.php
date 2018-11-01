@@ -5,6 +5,7 @@ class LmeManage extends Admin_Controller {
 	{
 		parent::__construct();
         $this->load->model(array('Lme_manage_model'));
+        $this->load->helper(array('admin_helper'));
 	}
 
 	function index($page_no=1)
@@ -62,6 +63,32 @@ class LmeManage extends Admin_Controller {
         $id = intval($id);
         $data_info = $this->Lme_manage_model->get_one(array('id' => $id));
         if (!$data_info) exit(json_encode(array('status'=>false,'tips'=>'编辑的信息ID不存在')));
+
+        // 获取上一交易日数据
+        // 先判断今日是星期几
+        $date = $data_info['date'];
+        $week = date('w', strtotime($date));
+
+        // 如果是星期一
+        if ($week=='1') {
+            $last_date = date('Ymd', strtotime($date)-259200);
+        } else {
+            $last_date = date('Ymd', strtotime($date)-86400);
+        }
+
+        $last_data = $this->Lme_manage_model->get_one(array('date' => $last_date));
+        if ($last_data) {
+            // 有上一天数据
+            $data_info['cu_change'] = $data_info['cu_keep'] - $last_data['cu_keep'];
+            $data_info['al_change'] = $data_info['al_keep'] - $last_data['al_keep'];
+            $data_info['zn_change'] = $data_info['zn_keep'] - $last_data['zn_keep'];
+            $data_info['ni_change'] = $data_info['ni_keep'] - $last_data['ni_keep'];
+            $data_info['sn_change'] = $data_info['sn_keep'] - $last_data['sn_keep'];
+            $data_info['pb_change'] = $data_info['pb_keep'] - $last_data['pb_keep'];
+        } else {
+            // 没有
+            $data_info['cu_change'] = $data_info['al_change'] = $data_info['zn_change'] = $data_info['ni_change'] = $data_info['sn_change'] = $data_info['pb_change'] = '没有数据('.$last_date.')';
+        }
 
         $this->view('show', array('require_js'=>true, 'is_edit'=>true, 'data_info'=>$data_info));
     }

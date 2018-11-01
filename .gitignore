@@ -1,0 +1,10 @@
+#log
+application/logs
+*/logs/log-*.php
+!*/logs/index.html
+
+#cache
+application/cache
+*/cache/*
+!*/cache/index.html
+!*/cache/.htaccess
