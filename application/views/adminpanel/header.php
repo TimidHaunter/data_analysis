@@ -16,6 +16,7 @@
 <link rel="stylesheet" href="<?php echo ADMIN_CSS_PATH.'style.css'?>">
 <?php if(isset($require_js)):?>
 <script language="javascript" type="text/javascript"> var SITE_URL = "<?php echo SITE_URL?>";</script>
+<script src="<?php echo base_url('/scripts/lib/jquery.js')?>" ></script>
 <script src="<?php echo base_url('/scripts/require.js')?>" ></script>
 <?php else:?>
 <script src="<?php echo base_url('/scripts/lib/jquery.js')?>" ></script>
