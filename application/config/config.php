@@ -363,10 +363,10 @@ $config['encryption_key'] = 'ACI_BY_AUTOCODEIGNITER_COM';
 */
 $config['sess_driver'] = 'database';
 $config['sess_cookie_name'] = 'autocodeigniter_com';
-$config['sess_expiration'] = 7200;
+$config['sess_expiration'] = 86400;
 $config['sess_save_path'] = 't_sys_sessions';
 $config['sess_match_ip'] = FALSE;
-$config['sess_time_to_update'] = 7000;
+$config['sess_time_to_update'] = 86400;
 $config['sess_regenerate_destroy'] = FALSE;
 
 /*
