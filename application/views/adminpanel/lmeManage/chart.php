@@ -1,5 +1,5 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed.'); ?>
-<?php $yAxis_series_cu_keep = $yAxis_series_al_keep = $yAxis_series_zn_keep = $yAxis_series_ni_keep = $yAxis_series_sn_keep = $yAxis_series_pb_keep = array();?>
+<?php $yAxis_series_cu_keep = $yAxis_series_al_keep = $yAxis_series_zn_keep = $yAxis_series_ni_keep = $yAxis_series_sn_keep = $yAxis_series_pb_keep = $yAxis_series_cu_cancel_percent = array();?>
 <div class='panel panel-default grid'>
     <div class='panel-heading'>
         <i class='glyphicon glyphicon-th-list'></i> <?='Lme管理-图表'?>
@@ -19,6 +19,7 @@
                 <div id="container_ni_keep" style="width:48%;height:300px;display:inline-block;"></div>
                 <div id="container_sn_keep" style="width:48%;height:300px;display:inline-block;"></div>
                 <div id="container_pb_keep" style="width:48%;height:300px;display:inline-block;"></div>
+                <div id="container_cu_cancel_percent" style="width:48%;height:300px;display:inline-block;"></div>
                 <?php foreach ($data_list as $v): ?>
                     <?php $xAxis_serise_date[] = $v['date']; ?>
                     <?php $yAxis_series_cu_keep[] = intval($v['cu_keep']); ?>
@@ -27,6 +28,7 @@
                     <?php $yAxis_series_ni_keep[] = intval($v['ni_keep']); ?>
                     <?php $yAxis_series_sn_keep[] = intval($v['sn_keep']); ?>
                     <?php $yAxis_series_pb_keep[] = intval($v['pb_keep']); ?>
+                    <?php $yAxis_series_cu_cancel_percent[] = $v['cu_cancel_percent']; ?>
                 <?php endforeach; ?>
 
             <?php elseif(is_array($data_list)): ?>
@@ -44,6 +46,7 @@
     var yAxis_series_ni_keep = <?php echo json_encode($yAxis_series_ni_keep); ?>;
     var yAxis_series_sn_keep = <?php echo json_encode($yAxis_series_sn_keep); ?>;
     var yAxis_series_pb_keep = <?php echo json_encode($yAxis_series_pb_keep); ?>;
+    var yAxis_series_cu_cancel_percent = <?php echo json_encode($yAxis_series_cu_cancel_percent); ?>;
     require(['<?php echo SITE_URL?>scripts/common.js'], function (common) {
         require(['<?php echo SITE_URL?>scripts/<?php echo $folder_name?>/<?php echo $controller_name?>/chart.js']);
     });

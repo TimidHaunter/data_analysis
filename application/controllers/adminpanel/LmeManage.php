@@ -29,6 +29,16 @@ class LmeManage extends Admin_Controller {
         $order_by = 'date ASC';
         $data_list = $this->Lme_manage_model->listinfo($where, '*', $order_by, $page_no, $this->Lme_manage_model->page_size,'',$this->Member_model->page_size,page_list_url('adminpanel/lmeManage/index',true));
 
+        if ($data_list) {
+            foreach ($data_list as $k=>$v) {
+                $data_list[$k]['cu_cancel_percent'] = percent_format($v['cu_cancel']/$v['cu_keep']).'%';
+                $data_list[$k]['al_cancel_percent'] = percent_format($v['al_cancel']/$v['al_keep']).'%';
+                $data_list[$k]['zn_cancel_percent'] = percent_format($v['zn_cancel']/$v['zn_keep']).'%';
+                $data_list[$k]['ni_cancel_percent'] = percent_format($v['ni_cancel']/$v['ni_keep']).'%';
+                $data_list[$k]['sn_cancel_percent'] = percent_format($v['sn_cancel']/$v['sn_keep']).'%';
+                $data_list[$k]['pb_cancel_percent'] = percent_format($v['pb_cancel']/$v['pb_keep']).'%';
+            }
+        }
         $this->view('chart', array('require_js'=>true, 'data_list'=>$data_list??array()));
     }
 
