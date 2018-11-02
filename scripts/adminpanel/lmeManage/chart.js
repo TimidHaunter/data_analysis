@@ -52,4 +52,21 @@ require(['jquery', 'bootstrap', 'highcharts', 'exporting'], function ($) {
         series: [{name: '铅库存', data: yAxis_series_pb_keep}],
         responsive: {rules: [{condition: {maxWidth: 500}, chartOptions: {legend: {layout: 'horizontal', align: 'center', verticalAlign: 'bottom'}}}]}
     });
+
+    $('#container_cu_cancel_percent').highcharts({
+        chart: {type: 'spline'},
+        title: {text: '注销仓单比'},
+        xAxis: {categories: xAxis_serise_date},
+        yAxis: {title: {text: '百分数'}, labels: {formatter: function () {return this.value + '%';}}},
+        tooltip: {crosshairs: true, shared: true},
+        plotOptions: {spline: {marker: {radius: 2, lineColor: '#666666', lineWidth: 1}}},
+        series: [
+            {name: '铜 注销仓单比', marker: {symbol: 'square'}, data: yAxis_series_cu_cancel_percent},
+            {name: '铝 注销仓单比', marker: {symbol: 'square'}, data: yAxis_series_al_cancel_percent},
+            {name: '锌 注销仓单比', marker: {symbol: 'square'}, data: yAxis_series_zn_cancel_percent},
+            {name: '镍 注销仓单比', marker: {symbol: 'square'}, data: yAxis_series_ni_cancel_percent},
+            {name: '锡 注销仓单比', marker: {symbol: 'square'}, data: yAxis_series_sn_cancel_percent},
+            {name: '铅 注销仓单比', marker: {symbol: 'square'}, data: yAxis_series_pb_cancel_percent},
+        ]
+    });
 });

@@ -17,6 +17,15 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="zn" class="col-sm-2 control-label form-control-static"></label>
+                    <div class="col-sm-2">
+                        <span class="form-control" size="20" readonly>今日留存</span>
+                    </div>
+                    <div class="col-sm-2">
+                        <span class="form-control" size="20" readonly>注销仓单量</span>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label for="cu" class="col-sm-2 control-label form-control-static"><?='铜(Cu)'?></label>
                     <div class="col-sm-2">
                         <input class="form-control" type="text" size="20" value="<?=@$data_info['cu_keep']??""?>" autocomplete="off" name="cu_keep" id="cu_keep" placeholder="<?='请填写铜今日留存'?>"/>

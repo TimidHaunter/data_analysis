@@ -28,7 +28,12 @@
                     <?php $yAxis_series_ni_keep[] = intval($v['ni_keep']); ?>
                     <?php $yAxis_series_sn_keep[] = intval($v['sn_keep']); ?>
                     <?php $yAxis_series_pb_keep[] = intval($v['pb_keep']); ?>
-                    <?php $yAxis_series_cu_cancel_percent[] = $v['cu_cancel_percent']; ?>
+                    <?php $yAxis_series_cu_cancel_percent[] = (float)$v['cu_cancel_percent']; ?>
+                    <?php $yAxis_series_al_cancel_percent[] = (float)$v['al_cancel_percent']; ?>
+                    <?php $yAxis_series_zn_cancel_percent[] = (float)$v['zn_cancel_percent']; ?>
+                    <?php $yAxis_series_ni_cancel_percent[] = (float)$v['ni_cancel_percent']; ?>
+                    <?php $yAxis_series_sn_cancel_percent[] = (float)$v['sn_cancel_percent']; ?>
+                    <?php $yAxis_series_pb_cancel_percent[] = (float)$v['pb_cancel_percent']; ?>
                 <?php endforeach; ?>
 
             <?php elseif(is_array($data_list)): ?>
@@ -47,6 +52,11 @@
     var yAxis_series_sn_keep = <?php echo json_encode($yAxis_series_sn_keep); ?>;
     var yAxis_series_pb_keep = <?php echo json_encode($yAxis_series_pb_keep); ?>;
     var yAxis_series_cu_cancel_percent = <?php echo json_encode($yAxis_series_cu_cancel_percent); ?>;
+    var yAxis_series_al_cancel_percent = <?php echo json_encode($yAxis_series_al_cancel_percent); ?>;
+    var yAxis_series_zn_cancel_percent = <?php echo json_encode($yAxis_series_zn_cancel_percent); ?>;
+    var yAxis_series_ni_cancel_percent = <?php echo json_encode($yAxis_series_ni_cancel_percent); ?>;
+    var yAxis_series_sn_cancel_percent = <?php echo json_encode($yAxis_series_sn_cancel_percent); ?>;
+    var yAxis_series_pb_cancel_percent = <?php echo json_encode($yAxis_series_pb_cancel_percent); ?>;
     require(['<?php echo SITE_URL?>scripts/common.js'], function (common) {
         require(['<?php echo SITE_URL?>scripts/<?php echo $folder_name?>/<?php echo $controller_name?>/chart.js']);
     });
