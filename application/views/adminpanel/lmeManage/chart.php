@@ -5,10 +5,6 @@
         <i class='glyphicon glyphicon-th-list'></i> <?='Lme管理-图表'?>
         <div class='panel-tools'>
             <div class='btn-group'>
-                <?php aci_ui_a($folder_name, $controller_name, 'add', '', ' class="btn  btn-sm "', '<span class="glyphicon glyphicon-plus"></span>添加') ?>
-            </div>
-            <div class='badge'><?php echo count($data_list); ?></div>
-            <div class='btn-group'>
                 <?php aci_ui_a($folder_name, $controller_name, 'index', '', ' class="btn  btn-sm "', '<span class="glyphicon glyphicon-th-list"></span>Lme管理-列表') ?>
             </div>
         </div>
