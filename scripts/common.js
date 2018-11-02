@@ -16,7 +16,9 @@ require.config({
 		"modal":"./lib/sco.modal",
 		"headroom":"./lib/headroom.min",
         "cookie":"./lib/jquery.cookie",
-        "datetimepicker":"lib/jquery.datetimepicker"
+        "datetimepicker":"lib/jquery.datetimepicker",
+        "highcharts":"./lib/highcharts",
+        "exporting":"./lib/exporting"
     },
     shim: {
         "jquery-ui": {

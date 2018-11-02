@@ -139,6 +139,7 @@ $config['aci_module'] = array (
     'website' => 'http://',
     'moduleDetails' => array (
         array ('folder' => 'adminpanel', 'controller' => 'lmeManage', 'method' => 'index', 'caption' => 'Lme管理-列表'),
+        array ('folder' => 'adminpanel', 'controller' => 'lmeManage', 'method' => 'chart', 'caption' => 'Lme管理-图表'),
         array ('folder' => 'adminpanel', 'controller' => 'lmeManage', 'method' => 'add',   'caption' => 'Lme管理-添加'),
         array ('folder' => 'adminpanel', 'controller' => 'lmeManage', 'method' => 'edit',  'caption' => 'Lme管理-编辑'),
         array ('folder' => 'adminpanel', 'controller' => 'lmeManage', 'method' => 'show',  'caption' => 'Lme管理-查看'),

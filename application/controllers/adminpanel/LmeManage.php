@@ -20,6 +20,18 @@ class LmeManage extends Admin_Controller {
 		$this->view('index', array('require_js'=>true, 'data_list'=>$data_list??array()));
 	}
 
+    function chart($page_no=1)
+    {
+        $page_no = max(intval($page_no),1);
+
+        $where_arr = array();
+        $where = implode(" and ", $where_arr);
+        $order_by = 'date ASC';
+        $data_list = $this->Lme_manage_model->listinfo($where, '*', $order_by, $page_no, $this->Lme_manage_model->page_size,'',$this->Member_model->page_size,page_list_url('adminpanel/lmeManage/index',true));
+
+        $this->view('chart', array('require_js'=>true, 'data_list'=>$data_list??array()));
+    }
+
 	function add()
     {
         if ($this->input->is_ajax_request()) {
@@ -87,7 +99,7 @@ class LmeManage extends Admin_Controller {
             $data_info['pb_change'] = $data_info['pb_keep'] - $last_data['pb_keep'];
         } else {
             // 没有
-            $data_info['cu_change'] = $data_info['al_change'] = $data_info['zn_change'] = $data_info['ni_change'] = $data_info['sn_change'] = $data_info['pb_change'] = '没有数据('.$last_date.')';
+            $data_info['cu_change'] = $data_info['al_change'] = $data_info['zn_change'] = $data_info['ni_change'] = $data_info['sn_change'] = $data_info['pb_change'] = 0;
         }
 
         $this->view('show', array('require_js'=>true, 'is_edit'=>true, 'data_info'=>$data_info));
